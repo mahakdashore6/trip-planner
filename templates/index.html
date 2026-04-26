@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Trip Planner</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Travel themed background gradient */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px); /* Glassmorphism effect */
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: 0.3s all ease;
+            text-transform: uppercase;
+        }
+
+        .login-btn {
+            background-color: #4e73df;
+            color: white;
+            border: 2px solid #4e73df;
+        }
+
+        .login-btn:hover {
+            background-color: transparent;
+            border-color: white;
+            transform: scale(1.05);
+        }
+
+        .reg-btn {
+            background-color: white;
+            color: #4e73df;
+            border: 2px solid white;
+        }
+
+        .reg-btn:hover {
+            background-color: transparent;
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-container">
+        <h1>Welcome to Trip Planner</h1>
+        <p>Apni trips manage karne ke liye niche diye gaye options choose karein:</p>
+        
+        <div class="btn-group">
+            <a href="/login" class="btn login-btn">Login</a>
+            <a href="/register_page" class="btn reg-btn">Register</a>
+        </div>
+    </div>
+
+</body>
+</html>
