@@ -65,6 +65,7 @@ def dashboard():
         return redirect(url_for('login_page'))
     conn = get_db_connection()
     trips = conn.execute('SELECT * FROM trips WHERE user_id = ?', (session['user_id'],)).fetchall()
+    
     conn.close()
     return render_template('dashboard.html', trips=trips)
 
