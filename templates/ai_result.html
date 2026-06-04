@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results for {{ city.title() }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { background: #0f172a; color: white; font-family: 'Poppins', sans-serif; padding: 30px 15px; text-align: center; box-sizing: border-box; }
+        .container { max-width: 800px; margin: auto; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid #00d2ff; }
+        .badge { background: #f39c12; color: black; padding: 8px 18px; border-radius: 20px; font-weight: bold; font-size: 14px; display: inline-block; }
+        .city-image { width: 100%; max-height: 380px; object-fit: cover; border-radius: 15px; margin-top: 25px; margin-bottom: 15px; }
+        .ai-content { text-align: left; background: #1e293b; padding: 30px; border-radius: 15px; margin-top: 25px; line-height: 1.8; font-size: 16px; color: #cbd5e1; border: 1px solid #334155; }
+        .back-btn { display: inline-block; color: #00d2ff; text-decoration: none; font-weight: bold; font-size: 16px; margin-top: 30px; padding: 10px 20px; border: 1px solid #00d2ff; border-radius: 10px; transition: 0.3s; }
+        .back-btn:hover { background: rgba(0, 210, 255, 0.1); transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📍 {{ city.title() }}</h1>
+        <p><span class="badge">🌡️ Live Weather: {{ weather }}</span></p>
+        {% if image_url %} <img src="{{ image_url }}" alt="{{ city }}" class="city-image"> {% endif %}
+        <div class="ai-content">
+            <h3 style="color: #00d2ff; margin-top: 0;">🤖 AI Travel Guide says:</h3>
+            {{ info | safe }}
+        </div>
+        {% if session.get('user_id') %}
+            <a href="{{ url_for('dashboard') }}" class="back-btn">← Back to Dashboard</a>
+        {% else %}
+            <a href="{{ url_for('index') }}" class="back-btn">← Search Another City</a>
+        {% endif %}
+    </div>
+</body>
+</html>

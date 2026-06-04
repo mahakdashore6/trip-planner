@@ -3,204 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Trip Planner</title>
+    <title>Trip Planner - Full Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: white;
+        /* Full screen setup */
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-color: #f0f2f5; 
+            margin: 0; 
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
         }
 
-        .container { max-width: 1100px; margin: auto; padding: 25px; }
-
-        /* Navbar with All Buttons */
-        .nav {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            padding: 15px 25px;
-            border-radius: 20px;
-            display: flex;
-            justify-content: space-between;
+        /* Header takes full width */
+        header { 
+            background: #2d3436; 
+            color: white; 
+            padding: 20px 5%; 
+            display: flex; 
+            justify-content: space-between; 
             align-items: center;
-            margin-bottom: 30px;
-            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
-        .nav h1 { font-size: 22px; margin: 0; }
-
-        .nav-links { display: flex; gap: 10px; }
-
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 13px;
-            transition: 0.3s;
+        /* Main container covers 95% of screen */
+        .container { 
+            width: 100; 
+            max-width: 100%; 
+            margin: 0; 
+            padding: 0 20px;
         }
 
-        .btn-feedback { background: #fbc02d; color: #333 !important; }
-        .btn-help { background: #4fc3f7; }
-        .btn-logout { background: #ff5e5e; }
-
-        .nav-links a:hover { transform: translateY(-2px); opacity: 0.9; }
-
-        /* Main Form Card */
-        .action-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 25px;
-            border: 1px solid rgba(255,255,255,0.2);
-            margin-bottom: 30px;
+        /* Cards style */
+        .card { 
+            background: white; 
+            padding: 30px; 
+            margin-bottom: 25px; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e1e4e8;
         }
 
-        input, select {
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.2);
-            color: white;
+        h2 { color: #2d3436; margin-top: 0; font-size: 1.4rem; border-left: 5px solid #0984e3; padding-left: 15px; }
+
+        /* Form elements grid layout for full screen */
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        input, select { 
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 15px; 
+            border: 1px solid #ddd; 
+            border-radius: 10px; 
+            font-size: 15px;
             outline: none;
         }
 
-        select option { background: #222; color: white; }
+        input:focus { border-color: #0984e3; box-shadow: 0 0 5px rgba(9,132,227,0.2); }
 
-        .btn-main {
-            background: linear-gradient(to right, #3a7bd5, #00d2ff);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
+        .btn { 
+            padding: 12px 25px; 
+            border: none; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            font-weight: 600; 
             transition: 0.3s;
+            color: white;
         }
 
-        /* Standout Delete Button */
-        .delete-btn {
-            background: #ff4d4d;
-            color: white !important;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 12px;
-            font-size: 13px;
-            font-weight: bold;
-            border: none;
-            transition: 0.3s ease;
-            box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3);
-        }
+        .btn-create { background: #0984e3; }
+        .btn-ai { background: #00b894; }
+        .btn-expense { background: #fdcb6e; color: #2d3436; }
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
 
-        .delete-btn:hover {
-            background: #cc0000;
-            transform: translateY(-2px);
-        }
-
-        /* Trip Card Styling */
-        .trip-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 25px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .trip-header { padding: 20px; background: rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
-
-        .budget-bar { display: flex; justify-content: space-around; padding: 12px; background: rgba(0,0,0,0.2); }
-
-        .section-box { padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
-
-        ul { list-style: none; padding: 0; }
-        li { background: rgba(255,255,255,0.05); margin: 6px 0; padding: 10px; border-radius: 10px; font-size: 14px; }
+        /* Full-width Table */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background-color: #f8f9fa; color: #0984e3; text-transform: uppercase; font-size: 13px; }
+        
+        .logout-btn { color: #ff7675; text-decoration: none; font-weight: bold; border: 1px solid #ff7675; padding: 8px 15px; border-radius: 8px; }
+        .logout-btn:hover { background: #ff7675; color: white; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="nav">
-        <h1>Trip Planner ✈️</h1>
-        <div class="nav-links">
-            <a href="/feedback" class="btn-feedback">Feedback ⭐</a>
-            <a href="/help" class="btn-help">Help 🆘</a>
-            <a href="/logout" class="btn-logout">Logout 🚪</a>
+    <header>
+        <h1 style="margin:0;">Bharat Yatra Planner ✨</h1>
+        <div>
+            <span style="margin-right:20px;">Welcome, <strong>{{ session['user_name'] }}</strong></span>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
         </div>
-    </div>
+    </header>
 
-    <h2>Hello, {{ name }}! ✨</h2>
-
-    <div class="action-card">
-        <h3>📍 Nayi Trip Plan Karein</h3>
-        <form action="/add_trip" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <input type="text" name="trip_name" placeholder="Trip Name" required>
-            <input type="text" name="destination" placeholder="Destination" required>
-            <input type="date" name="start_date" required>
-            <input type="number" name="budget" placeholder="Budget ₹" required>
-            <button type="submit" class="btn-main">Create Trip</button>
-        </form>
-    </div>
-
-    {% for trip in trips %}
-    <div class="trip-card">
-        <div class="trip-header">
-            <div>
-                <h3 style="margin:0; text-transform: capitalize;">🚢 {{ trip.trip_name }}</h3>
-                <small>{{ trip.destination }} | {{ trip.start_date }}</small>
-            </div>
-            <a href="/delete_trip/{{ trip.id }}" class="delete-btn" onclick="return confirm('Trip delete karein?')">🗑️ Delete</a>
+    <div class="container">
+        
+        <!-- 1. Create Trip Section -->
+        <div class="card">
+            <h2>🆕 1. Create a New Trip</h2>
+            <form action="{{ url_for('create_trip') }}" method="POST" class="form-row">
+                <input type="text" name="trip_name" placeholder="Trip Name (e.g. Ujjain Spiritual)" required>
+                <input type="text" name="destination" placeholder="Destination City" required>
+                <input type="number" name="budget" placeholder="Budget (₹)" required>
+                <button type="submit" class="btn btn-create">Create Trip</button>
+            </form>
         </div>
 
-        <div class="budget-bar">
-            <span style="color: #ff9494;">Kharcha: ₹{{ trip.total_spent }}</span>
-            <span style="color: #00d2ff;">Bacha: ₹{{ trip.remaining }}</span>
-            <span>Budget: ₹{{ trip.budget }}</span>
+        <!-- 2. AI Assistant Section -->
+        <div class="card">
+            <h2>🤖 2. AI Trip Assistant</h2>
+            <form action="{{ url_for('ai_plan') }}" method="POST" class="form-row">
+                <input type="text" name="city" placeholder="Which city do you want to explore?">
+                <input type="number" name="budget" placeholder="Budget for AI Planning">
+                <button type="submit" class="btn btn-ai">Generate AI Itinerary</button>
+            </form>
         </div>
 
-        <div class="section-box">
-            <strong>💸 Kharcha Add Karein</strong>
-            <form action="/add_expense/{{ trip.id }}" method="POST" style="display: flex; gap: 8px; margin-top: 10px;">
-                <select name="category">
-                    <option value="Food">Food 🍔</option>
-                    <option value="Travel">Travel ✈️</option>
-                    <option value="Hotel">Hotel 🏨</option>
-                    <option value="Other">Other 📩</option>
+        <!-- 3. Expense Tracker Section -->
+        <div class="card">
+            <h2>💸 3. Expense Tracker</h2>
+            <form action="{{ url_for('add_expense') }}" method="POST" class="form-row">
+                <select name="trip_id" required>
+                    <option value="">-- Select Your Active Trip --</option>
+                    {% for trip in trips %}
+                        <option value="{{ trip.id }}">{{ trip.trip_name }}</option>
+                    {% endfor %}
                 </select>
-                <input type="number" name="amount" placeholder="₹" style="width: 80px;" required>
-                <input type="text" name="description" placeholder="Notes" required>
-                <button type="submit" class="btn-main">Add</button>
+                <select name="category">
+                    <option value="Food">🍔 Food</option>
+                    <option value="Transport">🚗 Transport</option>
+                    <option value="Hotel">🏨 Hotel</option>
+                    <option value="Shopping">🛍️ Shopping</option>
+                </select>
+                <input type="number" name="amount" placeholder="Amount (₹)" required>
+                <input type="text" name="description" placeholder="Short description (e.g. Train ticket)">
+                <button type="submit" class="btn btn-expense">Add Expense</button>
             </form>
-            <ul style="margin-top: 15px;">
-                {% for exp in trip.expenses %}
-                    <li>{{ exp.category }}: ₹{{ exp.amount }} - {{ exp.description }}</li>
-                {% endfor %}
-            </ul>
         </div>
 
-        <div class="section-box" style="background: rgba(0,0,0,0.1);">
-            <strong>🗓️ Day-wise Itinerary</strong>
-            <form action="/add_plan/{{ trip.id }}" method="POST" style="display: flex; gap: 8px; margin-top: 10px;">
-                <input type="text" name="day_number" placeholder="Day" style="width: 70px;" required>
-                <input type="text" name="activity" placeholder="Kya plan hai?" style="flex: 1;" required>
-                <button type="submit" class="btn-main" style="background: #78c850;">Save Day</button>
-            </form>
-            <ul style="margin-top: 15px;">
-                {% for plan in trip.plans %}
-                    <li><b style="color:#00d2ff;">Day {{ plan.day_number }}:</b> {{ plan.activity }}</li>
-                {% endfor %}
-            </ul>
+        <!-- 4. Table Section -->
+        <div class="card">
+            <h2>📅 My Planned Trips</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Trip Name</th>
+                        <th>Destination</th>
+                        <th>Allocated Budget</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for trip in trips %}
+                    <tr>
+                        <td><strong>{{ trip.trip_name }}</strong></td>
+                        <td>{{ trip.destination }}</td>
+                        <td>₹{{ trip.budget }}</td>
+                        <td><a href="#" style="color:#0984e3; text-decoration:none;">View Details</a></td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4" style="text-align: center; color: #636e72; padding: 40px;">
+                            No trips found. Start your journey by creating a trip above!
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
+
     </div>
-    {% endfor %}
 
-</div>
 </body>
 </html>

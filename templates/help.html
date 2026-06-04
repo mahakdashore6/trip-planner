@@ -6,128 +6,30 @@
     <title>Help Center - Trip Planner</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            /* Ultra-High Quality Sunset Travel Background */
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-
-        .help-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 40px;
-            border-radius: 35px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            width: 90%;
-            max-width: 700px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            animation: slideUp 0.7s ease-out;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .help-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .help-header h1 {
-            font-size: 32px;
-            margin: 0;
-            color: #00d2ff; /* Bright Cyan */
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .faq-item {
-            background: rgba(0, 0, 0, 0.25); /* Darker contrast for better readability */
-            padding: 20px;
-            border-radius: 20px;
-            margin-bottom: 15px;
-            border-left: 5px solid #00d2ff;
-            transition: 0.3s;
-        }
-
-        .faq-item:hover {
-            background: rgba(0, 0, 0, 0.4);
-            transform: scale(1.02);
-        }
-
-        .faq-item h3 {
-            margin: 0 0 5px 0;
-            font-size: 18px;
-            color: #78c850; /* Fresh Green */
-        }
-
-        .faq-item p {
-            margin: 0;
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .btn-back {
-            display: block;
-            width: fit-content;
-            margin: 30px auto 0;
-            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
-            color: white;
-            text-decoration: none;
-            padding: 12px 35px;
-            border-radius: 12px;
-            font-weight: bold;
-            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3);
-            transition: 0.3s;
-        }
-
-        .btn-back:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(0, 210, 255, 0.5);
-        }
+        body { margin: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-attachment: fixed; min-height: 100vh; display: flex; justify-content: center; align-items: center; color: white; }
+        .help-container { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); padding: 40px; border-radius: 35px; border: 1px solid rgba(255, 255, 255, 0.25); width: 90%; max-width: 700px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
+        .help-header h1 { font-size: 32px; color: #00d2ff; }
+        .faq-item { background: rgba(0, 0, 0, 0.25); padding: 20px; border-radius: 20px; margin-bottom: 15px; border-left: 5px solid #00d2ff; }
+        .faq-item h3 { margin: 0 0 5px 0; color: #78c850; }
+        .faq-item p { margin: 0; font-size: 14px; opacity: 0.9; }
+        .btn-back { display: block; width: fit-content; margin: 30px auto 0; background: linear-gradient(135deg, #00d2ff, #3a7bd5); color: white; text-decoration: none; padding: 12px 35px; border-radius: 12px; font-weight: bold; }
     </style>
 </head>
 <body>
-
 <div class="help-container">
     <div class="help-header">
         <h1>Kaise Help Kar Sakte Hain? 🆘</h1>
         <p>Aapki trip planning ko aasaan banane ke liye guide</p>
     </div>
-
     <div class="faq-item">
         <h3>Nayi Trip Kaise Add Karein? 📍</h3>
-        <p>Dashboard par 'Plan a New Adventure' form bharein aur 'Create Trip' click karein.</p>
+        <p>Dashboard par 'Create Trip' form bharein.</p>
     </div>
-
     <div class="faq-item">
         <h3>Kharcha Track Karein 💸</h3>
-        <p>Trip card mein 'Quick Expense' section mein amount aur category add karein.</p>
+        <p>Trip card mein Expense section mein amount add karein.</p>
     </div>
-
-    <div class="faq-item">
-        <h3>Itinerary (Day Plan) 🗓️</h3>
-        <p>Plans section mein Day number aur activity likh kar save karein.</p>
-    </div>
-
-    <div class="faq-item">
-        <h3>Trip Delete Karein 🗑️</h3>
-        <p>Purani trip hatane ke liye card par bane 'Delete' button ka use karein.</p>
-    </div>
-
-    <a href="/dashboard" class="btn-back">BACK TO DASHBOARD</a>
+    <a href="{{ url_for('dashboard') }}" class="btn-back">BACK TO DASHBOARD</a>
 </div>
-
 </body>
 </html>
