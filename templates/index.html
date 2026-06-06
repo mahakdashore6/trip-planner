@@ -15,108 +15,32 @@
         }
 
         .hero { padding: 60px 20px 20px 20px; }
-        .hero p { 
-            color: #94a3b8; 
-            max-width: 650px; 
-            margin: 0 auto 30px auto; 
-            line-height: 1.6; 
-            font-size: 1.1rem;
-        }
+        .hero p { color: #94a3b8; max-width: 650px; margin: 0 auto 30px auto; line-height: 1.6; font-size: 1.1rem; }
 
-        .btn-container { 
-            display: flex; 
-            justify-content: center; 
-            gap: 20px; 
-            margin-bottom: 50px; 
-        }
+        .btn-container { display: flex; justify-content: center; gap: 20px; margin-bottom: 50px; }
         
-        .btn-login { 
-            background: #00d2ff; 
-            color: #0b1120; 
-            padding: 12px 35px; 
-            border-radius: 30px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            transition: 0.3s;
-        }
-        
-        .btn-create { 
-            background: transparent; 
-            color: #00d2ff; 
-            padding: 12px 35px; 
-            border-radius: 30px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            border: 2px solid #00d2ff;
-            transition: 0.3s;
-        }
+        .btn-login { background: #00d2ff; color: #0b1120; padding: 12px 35px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn-create { background: transparent; color: #00d2ff; padding: 12px 35px; border-radius: 30px; text-decoration: none; font-weight: bold; border: 2px solid #00d2ff; transition: 0.3s; }
 
         .btn-login:hover { background: #00b8e6; }
         .btn-create:hover { background: rgba(0, 210, 255, 0.1); }
 
-        .explorer-card { 
-            background: #161e2d; 
-            padding: 40px; 
-            border-radius: 25px; 
-            max-width: 850px; 
-            margin: 0 auto 60px auto; 
-            border: 1px solid #1e293b;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
+        .explorer-card { background: #161e2d; padding: 40px; border-radius: 25px; max-width: 850px; margin: 0 auto 60px auto; border: 1px solid #1e293b; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .explorer-card h2 { color: #ffab00; margin-bottom: 15px; font-size: 1.8rem; }
-        .explorer-card p { color: #cbd5e1; margin-bottom: 25px; }
         
-        .search-box { 
-            display: flex; 
-            justify-content: center; 
-            gap: 10px; 
-            flex-wrap: wrap;
-        }
-        input { 
-            width: 65%; 
-            padding: 15px; 
-            border-radius: 10px; 
-            border: 1px solid #334155; 
-            background: #0b1120; 
-            color: white; 
-            font-size: 1rem;
-        }
-        .search-btn { 
-            background: #ffab00; 
-            color: #0b1120; 
-            padding: 15px 35px; 
-            border-radius: 10px; 
-            border: none; 
-            font-weight: bold; 
-            cursor: pointer; 
-            font-size: 1rem;
-            transition: 0.3s;
-        }
-        .search-btn:hover { background: #e69900; }
+        .search-box { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        input { width: 65%; padding: 15px; border-radius: 10px; border: 1px solid #334155; background: #0b1120; color: white; }
+        .search-btn { background: #ffab00; color: #0b1120; padding: 15px 35px; border-radius: 10px; border: none; cursor: pointer; font-weight: bold; }
 
-        .hint-text { 
-            font-size: 0.85rem; 
-            margin-top: 20px; 
-            color: #64748b; 
-            font-style: italic;
-        }
+        .features-grid { display: flex; justify-content: center; gap: 20px; padding: 0 20px; flex-wrap: wrap; }
+        
+        /* UPDATED: Card Links Styling */
+        .card-link { text-decoration: none; display: block; transition: 0.3s; }
+        .card-link:hover { transform: translateY(-10px); }
 
-        .features-grid { 
-            display: flex; 
-            justify-content: center; 
-            gap: 20px; 
-            padding: 0 20px; 
-            flex-wrap: wrap;
-        }
         .feature-card { 
-            background: #161e2d; 
-            padding: 30px 20px; 
-            border-radius: 15px; 
-            width: 280px; 
-            text-align: left; 
-            border: 1px solid #1e293b;
-            border-bottom: 4px solid #00d2ff;
-            transition: 0.3s;
+            background: #161e2d; padding: 30px 20px; border-radius: 15px; width: 280px; 
+            text-align: left; border: 1px solid #1e293b; border-bottom: 4px solid #00d2ff; 
         }
         .feature-card h3 { color: #00d2ff; margin-bottom: 15px; font-size: 1.2rem; }
         .feature-card p { color: #94a3b8; font-size: 0.95rem; line-height: 1.5; margin: 0; }
@@ -125,8 +49,8 @@
 <body>
 
     <div class="hero">
+        <h1>Bharat Yatra Planner ✨</h1>
         <p>Explore Bharat like never before. AI-powered itineraries, real-time weather, and budget tracking for your dream trip.</p>
-        
         <div class="btn-container">
             <a href="/login" class="btn-login">Login to Plan</a>
             <a href="/register" class="btn-create">Create Account</a>
@@ -140,24 +64,27 @@
             <input type="text" name="city" placeholder="Enter City (e.g. Ujjain)" required>
             <button type="submit" class="search-btn">Search AI</button>
         </form>
-        <p class="hint-text">
-            *Detailed day-wise planning aur budget tracker ke liye login zaroori hai.
-        </p>
     </div>
 
     <div class="features-grid">
-        <div class="feature-card">
-            <h3>🇮🇳 India Centric</h3>
-            <p>Bharat ke har kone ki local info aur hidden gems ka pata lagayein.</p>
-        </div>
-        <div class="feature-card">
-            <h3>🤖 Gemini AI Power</h3>
-            <p>Latest Gemini 1.5 Flash API ka upyog karke fast results payein.</p>
-        </div>
-        <div class="feature-card">
-            <h3>💸 Budget Tracker</h3>
-            <p>Apne kharchon par nazar rakhein aur trip ko manage karein.</p>
-        </div>
+        <a href="/dashboard" class="card-link">
+            <div class="feature-card">
+                <h3>🇮🇳 India Centric</h3>
+                <p>Bharat ke har kone ki local info aur hidden gems ka pata lagayein.</p>
+            </div>
+        </a>
+        <a href="/dashboard" class="card-link">
+            <div class="feature-card">
+                <h3>🤖 Gemini AI Power</h3>
+                <p>Latest Gemini 1.5 Flash API ka upyog karke fast results payein.</p>
+            </div>
+        </a>
+        <a href="/dashboard" class="card-link">
+            <div class="feature-card">
+                <h3>💸 Budget Tracker</h3>
+                <p>Apne kharchon par nazar rakhein aur trip ko manage karein.</p>
+            </div>
+        </a>
     </div>
 
 </body>
